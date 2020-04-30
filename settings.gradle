@@ -1,0 +1,2 @@
+rootProject.name='Middle Man'
+include ':app'
