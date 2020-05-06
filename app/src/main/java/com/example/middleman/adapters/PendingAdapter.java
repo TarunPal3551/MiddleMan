@@ -6,14 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,16 +19,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.middleman.OrderDetailsActivity;
 import com.example.middleman.R;
+import com.example.middleman.utils.OnItemClickListener;
 import com.google.android.material.button.MaterialButton;
 
 
 public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHolder> {
     Context mcontext;
+    OnItemClickListener onItemClickListener;
 
 
-    public PendingAdapter(Context mcontext) {
 
+    public PendingAdapter(Context mcontext, OnItemClickListener onItemClickListener) {
         this.mcontext = mcontext;
+        this.onItemClickListener = onItemClickListener;
 
     }
 
@@ -65,7 +65,7 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
     }
 
 
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
 //        Glide.with(mcontext)
 //                .asBitmap()
 //                .load(images.get(position))
@@ -80,27 +80,11 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
             }
 
         });
+
         holder.assignButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Dialog dialog = new Dialog(mcontext);
-                dialog.setContentView(R.layout.dialog_riders);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                Button cancelBTN = dialog.findViewById(R.id.closeButton);
-                RecyclerView recyclerViewRiders = dialog.findViewById(R.id.ridersRecyclerView);
-                recyclerViewRiders.setLayoutManager(new LinearLayoutManager(mcontext));
-                recyclerViewRiders.setAdapter(new RidersAdapter(mcontext));
-                cancelBTN.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-
-                dialog.show();
-
+                onItemClickListener.OnItemClick(position);
             }
         });
 

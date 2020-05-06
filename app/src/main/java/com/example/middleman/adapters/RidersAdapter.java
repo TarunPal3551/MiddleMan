@@ -12,13 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.middleman.R;
+import com.example.middleman.model.Rider;
+
+import java.util.ArrayList;
 
 
 public class RidersAdapter extends RecyclerView.Adapter<RidersAdapter.ViewHolder> {
     Context mcontext;
+    ArrayList<Rider> riderArrayList;
 
-    public RidersAdapter(Context mcontext) {
-
+    public RidersAdapter(Context mcontext, ArrayList<Rider> riderArrayList) {
+        this.riderArrayList = riderArrayList;
         this.mcontext = mcontext;
 
     }
@@ -26,11 +30,17 @@ public class RidersAdapter extends RecyclerView.Adapter<RidersAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-
+        TextView textViewName, textViewPendingJobs, textViewTotalJobs, textViewMobile;
+        ImageView imageViewProfile;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             //   imgCardView = itemView.findViewById(R.id.itemImage);
+            imageViewProfile = (ImageView) itemView.findViewById(R.id.imageProfile);
+            textViewName = (TextView) itemView.findViewById(R.id.riderName);
+            textViewTotalJobs = (TextView) itemView.findViewById(R.id.totalJobTextView);
+            textViewMobile = (TextView) itemView.findViewById(R.id.textViewMobileNumber);
+
 
 
 
@@ -53,6 +63,7 @@ public class RidersAdapter extends RecyclerView.Adapter<RidersAdapter.ViewHolder
 
 
     public void onBindViewHolder(ViewHolder holder, int position) {
+
 //        Glide.with(mcontext)
 //                .asBitmap()
 //                .load(images.get(position))
@@ -67,6 +78,10 @@ public class RidersAdapter extends RecyclerView.Adapter<RidersAdapter.ViewHolder
 //            }
 //
 //        });
+        holder.textViewName.setText("" + riderArrayList.get(position).getRider_name());
+        holder.textViewMobile.setText("" + riderArrayList.get(position).getMobile());
+
+
 
 
 
@@ -77,7 +92,7 @@ public class RidersAdapter extends RecyclerView.Adapter<RidersAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 10;
+        return riderArrayList.size();
     }
 
 

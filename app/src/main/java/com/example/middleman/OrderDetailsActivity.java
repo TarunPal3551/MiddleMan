@@ -13,12 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.middleman.adapters.DeliveryLocationAdapter;
 import com.example.middleman.adapters.RidersAdapter;
+import com.example.middleman.model.Rider;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
+
+import java.util.ArrayList;
 
 public class OrderDetailsActivity extends AppCompatActivity {
     MaterialToolbar toolbar;
     MaterialButton materialButton;
+    ArrayList<Rider> riderArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +40,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
                 Button cancelBTN = dialog.findViewById(R.id.closeButton);
                 RecyclerView recyclerViewRiders = dialog.findViewById(R.id.ridersRecyclerView);
                 recyclerViewRiders.setLayoutManager(new LinearLayoutManager(OrderDetailsActivity.this));
-                recyclerViewRiders.setAdapter(new RidersAdapter(OrderDetailsActivity.this));
+                recyclerViewRiders.setAdapter(new RidersAdapter(OrderDetailsActivity.this, riderArrayList));
                 cancelBTN.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

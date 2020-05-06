@@ -20,7 +20,8 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/user">
+                android:src="@drawable/user"
+                android:id="@+id/imageProfile">
 
             </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -38,7 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tarun Pal"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/riderName"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,7 +63,7 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:text="Pending Jobs :- " />
 
                         <TextView
@@ -69,7 +71,8 @@
                             android:layout_height="wrap_content"
                             android:text="50"
                             android:textColor="@color/color_orange_1"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:id="@+id/pendingJobsTextView"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -88,7 +91,8 @@
                             android:layout_height="wrap_content"
                             android:text="100"
                             android:textColor="@color/color_orange_1"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:id="@+id/totalJobTextView"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -107,7 +111,8 @@
                             android:layout_height="wrap_content"
                             android:text="+91-7417391228"
                             android:textColor="@color/color_orange_1"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:id="@+id/textViewMobileNumber"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -118,6 +123,7 @@
                     android:layout_weight="1.2"
                     android:text="Assign"
                     android:textSize="12sp"
+                    android:id="@+id/assignButton"
                     >
 
                 </com.google.android.material.button.MaterialButton>
